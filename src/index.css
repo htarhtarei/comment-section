@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+} 
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f1f5f9;
+    margin:0;
+    padding:0;
+    overflow-y:scroll;
+  }
+
+.collapse-line {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-left:40px;
+    width: 15px;
+    margin-top: .5rem;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transform: translateX(-50%);
+  }
+  
+  .collapse-line:hover::before,
+  .collapse-line:focus-visible::before {
+    background-color: #d1d5db;
+  }
+  
+  .collapse-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color:#d1d5db;
+    transition: background-color 100ms ease-in-out;
+  }
+
+  @media screen and (max-width: 745px) {
+    .collapse-line {
+      margin-left:10px;
+    }
+
+    .collapse-line::before{
+      left: 30%;
+
+    }
+
+  }
+  
