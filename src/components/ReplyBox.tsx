@@ -18,9 +18,12 @@ const ReplyBox = ({ replyData }: Props) => {
   const { userData: user} = useAppSelector(state => state.currentUser);
   const isYou = user.username === replyData.user.username;
 
+  const newContent = replyData.content.replace(`@${replyData.replyingTo} `, '');
+
+
   const [vote, setVote] = useState(replyData.score);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [updatedContent, setUpdatedContent] = useState<string>(`@${replyData.replyingTo} ${replyData.content}`);
+  const [updatedContent, setUpdatedContent] = useState<string>(`@${replyData.replyingTo} ${newContent}`);
   const textareaRef = useRef<HTMLTextAreaElement>(null);  
 
   useEffect(() => {
@@ -69,9 +72,6 @@ const ReplyBox = ({ replyData }: Props) => {
     dispatch(getNestedReplyParentId(parentId))
 
   }
-
-  const newContent = replyData.content.replace(`@${replyData.replyingTo} `, '');
-
 
   return (
     <div>
